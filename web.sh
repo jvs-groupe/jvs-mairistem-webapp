@@ -1,0 +1,1 @@
+docker exec -it jvs-mairistem-webapp_web_1 /bin/bash

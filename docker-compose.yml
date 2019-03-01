@@ -1,0 +1,9 @@
+version: '2'
+services:
+    web:
+        image: jvsgroupe/u16_tomcat9
+        ports:
+            - 8080:8080
+        volumes:
+            - .:/opt/java/jvs-mairistem-webapp
+            - ./docker-libs:/root/.m2/repository
