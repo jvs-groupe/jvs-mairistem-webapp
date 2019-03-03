@@ -79,6 +79,11 @@
       <artifactId>JvsMairistemCli</artifactId>
       <version>1.0.1</version>
     </dependency>
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>2.3.28</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -90,6 +95,7 @@
         <filtering>true</filtering>
         <includes>
             <include>**/log4j2.xml</include>
+            <include>**/views/*.ftlh</include>
         </includes>
       </resource>
     </resources>

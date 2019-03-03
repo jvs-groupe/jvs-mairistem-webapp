@@ -8,14 +8,14 @@
     <display-name>JvsMairistemWebApp</display-name>
     
     <servlet>
-        <servlet-name>Search</servlet-name>
-        <servlet-class>fr.jvsonline.jvsmairistemwebapp.Search</servlet-class>
+        <servlet-name>PointConsommation</servlet-name>
+        <servlet-class>fr.jvsonline.jvsmairistemwebapp.PointConsommation</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>Search</servlet-name>
-        <url-pattern>/search</url-pattern>
+        <servlet-name>PointConsommation</servlet-name>
+        <url-pattern>/point-de-consommation</url-pattern>
     </servlet-mapping>
     
 </web-app>
