@@ -77,7 +77,7 @@
     <dependency>
       <groupId>fr.jvsonline.jvsmairistemcli</groupId>
       <artifactId>JvsMairistemCli</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.2</version>
     </dependency>
     <dependency>
       <groupId>org.freemarker</groupId>

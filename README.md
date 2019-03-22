@@ -25,9 +25,11 @@ Il suffit ensuite de se rendre à l'url : http://localhost:8080. Le port par dé
 Pour compiler le projet manuellement, cepuis le conteneur dans le homedir du projet, à l'emplacement du fichier pom.xml.
 
 ```
-    // Installer le client en local
+    // Installer le client en local, à partir d'un build manuel
     cd /opt/java/jvs-mairistem-webapp/lib
     mvn install:install-file -Dfile=JvsMairistemCli-1.0.1.jar -DpomFile=JvsMairistemCli-1.0.1.pom.xml
+    // Forcé l'update maven
+    mvn clean install -U
     // Se placer dans le bon répertoire
     cd /opt/java/jvs-mairistem-webapp
     // Package
