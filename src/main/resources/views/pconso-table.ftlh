@@ -25,6 +25,9 @@
               <th>
                 Occupant
               </th>
+              <th>
+                Dernier index
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -50,6 +53,11 @@
                 <td>
                   <span>
                     ${pc.getContratActif().getOccupant().getNomComplet()}
+                  </span>
+                </td>
+                <td>
+                  <span>
+                    ${pc.getDernierReleve().toString()}
                   </span>
                 </td>
               </tr>

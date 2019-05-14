@@ -29,27 +29,34 @@ import fr.jvsonline.jvsmairistemcli.omega.model.*;
 public class Base extends HttpServlet {
   
   /**
+   * Le logger
    * @var Logger
    */
   protected static final Logger logger = LoggerFactory.getLogger(Base.class);
   
   /**
-   * 
+   * Le client qui servira aux appels
+   * @var JsonApiWS
    */
   protected static JsonApiWS wsClient = null;
   
   /**
-   * 
+   * Le conteneur de cache des appels OMEGA
+   * @var Container
    */
   protected static Container omegaContainer = null;
   
   /**
-   * 
+   * Le templater
+   * @var Configuration
    */
   protected static Configuration templater = null;
   
   /**
+   * Initialisation,
+   * On passe en dur les infos du client, un ApiId par client...
    * 
+   * @return void
    */
   protected void initJvsMairistemCli() {
     logger.info("----------------------------------------------------------");
@@ -74,12 +81,15 @@ public class Base extends HttpServlet {
         logger.info("Enumération " + item.getNom());
       }
     }
+    // Stockage en cache des enums, ... pour les codifications, ...
     omegaContainer.setEnums(myListE);
     logger.info("----------------------------------------------------------");
   }
   
   /**
+   * Initialisation du templater, UTF-8
    * 
+   * @return void
    */
   public void initTemplater() {
     this.templater = new Configuration(Configuration.VERSION_2_3_27);
@@ -91,8 +101,11 @@ public class Base extends HttpServlet {
   }
   
   /**
+   * Initialisation
    * 
    * @throws ServletException
+   * 
+   * @return void
    */
   public void init() throws ServletException {
     logger.info("----------------------------------------------------------");
@@ -103,6 +116,7 @@ public class Base extends HttpServlet {
   }
   
   /**
+   * Retourne un template
    * 
    * @param String p_name
    * 
@@ -122,6 +136,7 @@ public class Base extends HttpServlet {
   }
   
   /**
+   * Données communes
    * 
    * @return Map<String, Object>
    */
@@ -132,9 +147,12 @@ public class Base extends HttpServlet {
   }
   
   /**
+   * Page 404
    * 
-   * @param response
-   * @param p_message
+   * @param response  Réponse
+   * @param p_message Message
+   * 
+   * @return void
    */
   public void error404(HttpServletResponse response, String p_message) {
     logger.info("----------------------------------------------------------");
@@ -156,9 +174,12 @@ public class Base extends HttpServlet {
   }
   
   /**
+   * Page 500
    * 
-   * @param response
-   * @param p_message
+   * @param response  Réponse
+   * @param p_message Message
+   * 
+   * @return void
    */
   public void error500(HttpServletResponse response, String p_message) {
     logger.info("----------------------------------------------------------");
@@ -180,7 +201,9 @@ public class Base extends HttpServlet {
   }
   
   /**
+   * Destructeur
    * 
+   * @return void
    */
   public void destroy() {
     logger.info("----------------------------------------------------------");

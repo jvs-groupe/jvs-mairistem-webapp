@@ -29,7 +29,9 @@ import fr.jvsonline.jvsmairistemcli.omega.model.*;
 public class PointConsommation extends Base {
 
   /**
+   * Get classique d'un point de consommation avec son identifiant
    * 
+   * @return void
    */
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -77,11 +79,15 @@ public class PointConsommation extends Base {
   }
 
   /**
+   * Recherche de points de consommation
    * 
-   * @param request
-   * @param response
+   * @param request  Requête
+   * @param response Réponse
+   *
    * @throws ServletException
    * @throws IOException
+   * 
+   * @return void
    */
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -95,10 +101,20 @@ public class PointConsommation extends Base {
     // Appel su service web
     PointDeConsommationManager pconsoManager = null;
     try {
+      // Instance du manager pour la recherche,
+      // Manager qui reçoit le client ws en paramètre
       pconsoManager = new PointDeConsommationManager(this.wsClient);
+      // Initialisation puis ajout des paramètres de recherche
       pconsoManager.flushRequestParameters();
-      pconsoManager.addRequestParameter("contratActif.occupant.prenom", firstname);
+      if (firstname != "") {
+        pconsoManager.addRequestParameter("contratActif.occupant.prenom", firstname);
+      }
+      if (lastname != "") {
+        pconsoManager.addRequestParameter("contratActif.occupant.nom", lastname);
+      }
+      // ON lance la recherche
       List<PointDeConsommationModel> myListN = pconsoManager.find();
+      // Interprétation du résultat
       Template template = this.getTemplate("pconso-table");
       OutputStreamWriter outputWriter = new OutputStreamWriter(response.getOutputStream());
       Map<String, Object> templateData = this.getBaseData();
