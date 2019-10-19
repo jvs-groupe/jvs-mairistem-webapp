@@ -1,11 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.time.LocalDateTime" %>
+<#macro page>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="utf-8">
     <title>JVS-Mairistem WebApp</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/dee9b951b6.js" crossorigin="anonymous"></script>
     <style>
     /* Sticky footer styles
 -------------------------------------------------- */
@@ -57,34 +57,30 @@ code {
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="${basePath}">Accueil <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="point-de-consommation-list">Points de consommation</a>
+              <a class="nav-link" href="${basePath}point-de-consommation-list">Points de consommation</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="demande-list">Demandes</a>
+              <a class="nav-link" href="${basePath}demande-list">Demandes</a>
             </li>
           </ul>
           <div class="form-inline mt-2 mt-md-0">
-           <span class="text-white">Heure : <%= LocalDateTime.now() %></span>
+              
           </div>
         </div>
       </nav>
     </header>
     
     <main role="main" class="container">
-        
-      <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
-        <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Bienvenue sur le site de démonstration d'utilisation du client java.</h1>
-        </div>
-      </div>
+        <#-- This processes the enclosed content:  -->
+        <#nested>
     </main>
     
     <footer class="footer">
       <div class="container">
-        <span class="text-muted"><footer>&copy; Copyright 2019, JVS-Mairistem</span>
+        <span class="text-muted"><footer>&copy; Copyright 2019, ${siteName}</span>
       </div>
     </footer>
     
@@ -93,3 +89,4 @@ code {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </body>
 </html>
+</#macro>

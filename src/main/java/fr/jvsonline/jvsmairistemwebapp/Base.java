@@ -82,7 +82,41 @@ public class Base extends HttpServlet {
       }
     }
     // Stockage en cache des enums, ... pour les codifications, ...
-    omegaContainer.setEnums(myListE);
+    this.omegaContainer.setEnums(myListE);
+    logger.info("----------------------------------------------------------");
+    logger.info("   Récupération des articles...");
+    ArticleManager artManager = null;
+    artManager = new ArticleManager(wsClient);
+    artManager.setPage(1);
+    artManager.setPageLimit(100);
+    artManager.addRequestParameter("actif", "1");
+    List<ArticleModel> myListArts = artManager.find();
+    if (myListArts == null) {
+      logger.info("Empty result...");
+    } else {
+      for (ArticleModel item : myListArts) {
+        logger.info("Article " + item.getLibelle() + " : " + item.getPrixUnitaire());
+      }
+    }
+    this.omegaContainer.setArticles(myListArts);
+    //omegaContainer.setEnums(myListE);
+    logger.info("----------------------------------------------------------");
+    logger.info("   Récupération des organismes factureurs...");
+    OrganismeFactureurManager ofactManager = null;
+    ofactManager = new OrganismeFactureurManager(wsClient);
+    ofactManager.setPage(1);
+    ofactManager.setPageLimit(100);
+    List<OrganismeFactureurModel> myListOfacts = ofactManager.find();
+    if (myListOfacts == null) {
+      logger.info("Empty result...");
+    } else {
+      for (OrganismeFactureurModel item : myListOfacts) {
+        logger.info("Ofact " + item.getNom());
+        this.omegaContainer.setOrganismeFactureur(item);
+        break;
+      }
+    }
+    //omegaContainer.setEnums(myListE);
     logger.info("----------------------------------------------------------");
   }
   
@@ -143,6 +177,7 @@ public class Base extends HttpServlet {
   public Map<String, Object> getBaseData() {
     Map<String, Object> templateData = new HashMap<>();
     templateData.put("siteName", "Jvs-Mairistem WebApp");
+    templateData.put("basePath", "/JvsMairistemWebApp/");
     return templateData;
   }
   

@@ -1,27 +1,26 @@
-<!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <title>JVS-Mairistem WebApp</title>
-  </head>
-  <body>
+<#import "index.ftlh" as u>
+
+<@u.page>
     <form class="card" action="point-de-consommation" method="POST">
       <div class="card-header">
         <h2 class="form-title">Détail du point de consommation</h2>
       </div>
       <div class="card-body">
-        <div class="form-group">
-          <label for="id">Identifiant : </label>
-          <input type="text" id="id" name="id" value="${pconso.getId()?long?c}" />
+        <div class="form-group row">
+          <label class="col-3 col-form-label" for="id">Identifiant : </label>
+          <div class="col-9">
+            <input class="form-control" type="text" readonly id="id" name="id" value="${pconso.getId()?long?c}" />
+          </div>
         </div>
-        <div class="form-group">
-          <label for="numero">Numéro : </label>
-          <input type="text" id="numero" name="numero" value="${pconso.getNumero()}" />
+        <div class="form-group row">
+          <label class="col-3 col-form-label" for="numero">Num&eacute;ro : </label>
+          <div class="col-9">
+            <input class="form-control" type="text" readonly id="numero" name="numero" value="${pconso.getNumero()}" />
+          </div>
         </div>
       </div>
-      <div class="card-footer">
-        <input type="submit" value="Valider" />
+      <div class="card-footer text-right">
+        <input class="btn btn-primary" type="button" value="Retour" />
       </div>
     </form>
-  </body>
-</html>
+</@u.page>

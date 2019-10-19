@@ -1,11 +1,6 @@
-<!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <title>JVS-Mairistem WebApp</title>
-  </head>
-  <body>
+<#import "index.ftlh" as u>
+
+<@u.page>
     <h1>404 - Not Found</h1>
     <p>${message}</p>
-  </body>
-</html>
+</@u.page>

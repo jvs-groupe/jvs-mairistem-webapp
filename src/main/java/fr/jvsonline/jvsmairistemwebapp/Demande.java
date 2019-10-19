@@ -23,13 +23,13 @@ import fr.jvsonline.jvsmairistemcli.omega.manager.*;
 import fr.jvsonline.jvsmairistemcli.omega.model.*;
 
 /**
- * Gestion d'un point de consommation
+ * Gestion d'une demande
  *
  */
-public class PointConsommation extends Base {
+public class Demande extends Base {
 
   /**
-   * Get standard d'un point de consommation par Id
+   * Get standard d'un demande par ID
    * 
    * @return void
    */
@@ -39,22 +39,22 @@ public class PointConsommation extends Base {
     // Réponse par défaut
     response.setContentType("text/html");
     response.setCharacterEncoding("UTF-8");
-    String pconsoId = request.getParameter("id");
+    String myId = request.getParameter("id");
     try {
-      PointDeConsommationManager pconsoManager = null;
-      pconsoManager = new PointDeConsommationManager(this.wsClient);
-      pconsoManager.flushRequestParameters();
-      PointDeConsommationModel myPConso = pconsoManager.getById(Integer.valueOf(pconsoId));
-      if (myPConso != null) {
-        Template template = this.getTemplate("pconso-form");
+      DemandeManager myManager = null;
+      myManager = new DemandeManager(this.wsClient);
+      myManager.flushRequestParameters();
+      DemandeModel myModel = myManager.getById(Integer.valueOf(myId));
+      if (myModel != null) {
+        Template template = this.getTemplate("demande-form");
         OutputStreamWriter outputWriter = new OutputStreamWriter(response.getOutputStream());
         Map<String, Object> templateData = this.getBaseData();
-        templateData.put("pconso", myPConso);
+        templateData.put("demande", myModel);
         template.process(templateData, outputWriter);
         outputWriter.flush();
         outputWriter.close();
       } else {
-        this.error404(response, pconsoId);
+        this.error404(response, myId);
         return;
       }
     } catch (Exception ex) {

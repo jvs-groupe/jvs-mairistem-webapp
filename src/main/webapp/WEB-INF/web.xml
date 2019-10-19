@@ -12,10 +12,46 @@
         <servlet-class>fr.jvsonline.jvsmairistemwebapp.PointConsommation</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>PointConsommationList</servlet-name>
+        <servlet-class>fr.jvsonline.jvsmairistemwebapp.PointConsommationList</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>Demande</servlet-name>
+        <servlet-class>fr.jvsonline.jvsmairistemwebapp.Demande</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>DemandeList</servlet-name>
+        <servlet-class>fr.jvsonline.jvsmairistemwebapp.DemandeList</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>Facture</servlet-name>
+        <servlet-class>fr.jvsonline.jvsmairistemwebapp.Facture</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>PointConsommation</servlet-name>
         <url-pattern>/point-de-consommation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PointConsommationList</servlet-name>
+        <url-pattern>/point-de-consommation-list</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Demande</servlet-name>
+        <url-pattern>/demande</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DemandeList</servlet-name>
+        <url-pattern>/demande-list</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Facture</servlet-name>
+        <url-pattern>/point-de-consommation-ajout-facture</url-pattern>
     </servlet-mapping>
     
 </web-app>
